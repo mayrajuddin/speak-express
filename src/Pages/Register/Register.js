@@ -9,6 +9,7 @@ const Register = () => {
     }
     return (
         <Container className='py-5'>
+            <h5>this is register form </h5>
             <Form onSubmit={handleRgister} className='w-50 mx-auto border rounded px-3 py-4'>
                 <Form.Group className="mb-3" controlId="formName">
                     <Form.Label>Your Name</Form.Label>

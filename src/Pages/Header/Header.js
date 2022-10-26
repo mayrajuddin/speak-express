@@ -22,9 +22,9 @@ const Header = () => {
                         <Link to='blog' className='nav-link fs-4 text-capitalize'>FAQ</Link>
                     </Nav>
                     <Nav className='align-items-center'>
-                        <Link to='login' className='py-2 px-4 me-3 text-decoration-none bg-light font-c text-uppercase'>Login</Link>
-                        <Button variant="dark" className='py-2 px-4'>Dark</Button>
-                        <span> <FaUser className='fs-4 ms-2' /></span>
+                        <Link to='login' className='py-2 px-4 text-decoration-none bg-light font-c text-uppercase'>Login</Link>
+                        <Button variant="dark" className='py-2 px-4 mx-3'>Dark</Button>
+                        <span> <FaUser className='fs-4' /></span>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
