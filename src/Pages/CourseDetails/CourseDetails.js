@@ -23,7 +23,7 @@ const CourseDetails = () => {
                                     <p className='text-capitalize fs-5 text-muted m-0'>duration : 80:20</p>
                                 </div>
                             </Card.Body>
-                            <Link to='#' className='bg-dark text-light py-2 border rounded text-center fs-4 text-decoration-none text-capitalize'>get premium</Link>
+                            <Link to='/premium' className='bg-dark text-light py-2 border rounded text-center fs-4 text-decoration-none text-capitalize'>get premium</Link>
                         </Card>
                     </Col>
                 </Row>

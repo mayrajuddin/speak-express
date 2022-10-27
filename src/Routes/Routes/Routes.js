@@ -5,7 +5,9 @@ import CourseDetails from "../../Pages/CourseDetails/CourseDetails";
 import Courses from "../../Pages/Courses/Courses";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
+import Premium from "../../Pages/Premium/Premium";
 import Register from "../../Pages/Register/Register";
+import PrivateRoute from "../PrivateRoutes/PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -27,6 +29,10 @@ export const routes = createBrowserRouter([
             {
                 path: 'courseDetails',
                 element: <CourseDetails></CourseDetails>
+            },
+            {
+                path: 'premium',
+                element: <PrivateRoute> <Premium></Premium> </PrivateRoute>
             },
             {
                 path: 'login',

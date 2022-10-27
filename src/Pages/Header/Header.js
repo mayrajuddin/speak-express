@@ -6,7 +6,10 @@ import { Link } from 'react-router-dom';
 import logo from '../../../src/logo.png'
 import './Header.css'
 import { FaUser } from "react-icons/fa";
+import { useContext } from 'react';
+import { authContext } from '../../context/AuthProvider';
 const Header = () => {
+    const { user, logOut } = useContext(authContext)
     return (
         <Navbar collapseOnSelect expand="lg">
             <Container>
@@ -22,9 +25,13 @@ const Header = () => {
                         <Link to='blog' className='nav-link fs-4 text-capitalize'>FAQ</Link>
                     </Nav>
                     <Nav className='align-items-center'>
-                        <Link to='login' className='py-2 px-4 text-decoration-none bg-light font-c text-uppercase'>Login</Link>
-                        <Button variant="dark" className='py-2 px-4 mx-3'>Dark</Button>
-                        <span> <FaUser className='fs-4' /></span>
+                        <Button variant="dark" className='py-2 px-4 '>Dark</Button>
+                        {user?.uid ?
+                            <Button onClick={logOut} className='py-2 mx-3 px-3 text-decoration-none font-c text-uppercase'>Log Out</Button> :
+                            <Link to='login' className='py-2 px-4 text-decoration-none bg-light font-c text-uppercase'>Login</Link>
+
+                        }
+                        {user?.uid ? <img src={user?.photoURL} alt="userImage" style={{ height: '34px' }} className='rounded-circle' /> : <span> <FaUser className='fs-4' /></span>}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

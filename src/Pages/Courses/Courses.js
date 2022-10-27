@@ -24,7 +24,7 @@ const Courses = () => {
                                     <Card.Body>
                                         <Card.Title>Card title</Card.Title>
                                     </Card.Body>
-                                    <Link to='courseDetails' className='py-2 border rounded text-center fs-4 text-decoration-none'>Details</Link>
+                                    <Link to='/courseDetails' className='py-2 border rounded text-center fs-4 text-decoration-none'>Details</Link>
                                 </Card>
                             </Col>
                             <Col md={6}>
