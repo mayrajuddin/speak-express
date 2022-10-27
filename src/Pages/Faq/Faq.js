@@ -4,7 +4,7 @@ const Faq = () => {
     return (
         <div className='my-4'>
             <Container>
-                <h3 className='fs-2 fw-bold'>Frequently Asked Questions</h3>
+                <h3 className='fs-2 fw-bold text-center my-4'>Frequently Asked Questions</h3>
                 <Row className='mx-auto gy-4'>
                     <Col md={8} className='mx-auto'>
                         <div className='border px-3'>
