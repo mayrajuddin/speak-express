@@ -1,77 +1,48 @@
 import React from 'react';
-import { Col, Container, ListGroup, Row } from 'react-bootstrap';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom';
+import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import { Link, useLoaderData } from 'react-router-dom';
 const Courses = () => {
+    const [languages, setLanuages] = useState([])
+    const languageDetails = useLoaderData()
+    useEffect(() => {
+        fetch('http://localhost:5000/language-catagory')
+            .then(res => res.json())
+            .then(data => setLanuages(data))
+    }, [])
     return (
         <div className='my-3'>
             <Container>
                 <Row>
                     <Col lg={3}>
-                        <ListGroup>
-                            <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                            <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                            <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-                            <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-                            <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-                        </ListGroup>
+                        <div className='border rounded p-4'>
+                            <h4 className='pb-2 border-bottom text-center text-capitalize'>all language {languages.length}</h4>
+                            {
+                                languages.map(language => <p key={language.catagory_id} className='px-4 py-3 border-bottom m-0'>{language.catagory_name}</p>)
+                            }
+                        </div>
                     </Col>
                     <Col lg={9}>
                         <Row className='gy-3'>
-                            <Col md={6}>
-                                <Card className='p-3'>
-                                    <Card.Img variant="top" src="holder.js/100px160" />
-                                    <Card.Body>
-                                        <Card.Title>Card title</Card.Title>
-                                    </Card.Body>
-                                    <Link to='/courseDetails' className='py-2 border rounded text-center fs-4 text-decoration-none'>Details</Link>
-                                </Card>
-                            </Col>
-                            <Col md={6}>
-                                <Card>
-                                    <Card.Img variant="top" src="holder.js/100px160" />
-                                    <Card.Body>
-                                        <Card.Title>Card title</Card.Title>
-                                        <Card.Text>
-                                            This is a wider card with supporting text below as a natural lead-in
-                                            to additional content. This content is a little bit longer.
-                                        </Card.Text>
-                                    </Card.Body>
-                                    <Card.Footer>
-                                        <small className="text-muted">Last updated 3 mins ago</small>
-                                    </Card.Footer>
-                                </Card>
-                            </Col>
-                            <Col md={6}>
-                                <Card>
-                                    <Card.Img variant="top" src="holder.js/100px160" />
-                                    <Card.Body>
-                                        <Card.Title>Card title</Card.Title>
-                                        <Card.Text>
-                                            This is a wider card with supporting text below as a natural lead-in
-                                            to additional content. This content is a little bit longer.
-                                        </Card.Text>
-                                    </Card.Body>
-                                    <Card.Footer>
-                                        <small className="text-muted">Last updated 3 mins ago</small>
-                                    </Card.Footer>
-                                </Card>
-                            </Col>
-                            <Col md={6}>
-                                <Card>
-                                    <Card.Img variant="top" src="holder.js/100px160" />
-                                    <Card.Body>
-                                        <Card.Title>Card title</Card.Title>
-                                        <Card.Text>
-                                            This is a wider card with supporting text below as a natural lead-in
-                                            to additional content. This content is a little bit longer.
-                                        </Card.Text>
-                                    </Card.Body>
-                                    <Card.Footer>
-                                        <small className="text-muted">Last updated 3 mins ago</small>
-                                    </Card.Footer>
-                                </Card>
-                            </Col>
+                            {
+                                languageDetails.map(lan => (
+                                    <Col md={6} key={lan.id}>
+                                        <Card className='p-3'>
+                                            <Card.Img variant="top" src={lan.img_url} style={{ height: '200px' }} />
+                                            <Card.Body>
+                                                <Card.Title>language Name: {lan.language_name}</Card.Title>
+                                                <p className='fs-6'> <FaStar className='text-warning ' />
+                                                    <FaStar className='text-warning ' /><FaStar className='text-warning ' /><FaStar className='text-warning ' /><FaStarHalfAlt className='text-warning me-2' />
+                                                    {lan.ratings}</p>
+                                            </Card.Body>
+                                            <Link to={`/courseDetails/${lan.id}`} className='py-2 border rounded text-center fs-4 text-decoration-none'>Details</Link>
+                                        </Card>
+                                    </Col>
+                                ))
+                            }
                         </Row>
                     </Col>
                 </Row>

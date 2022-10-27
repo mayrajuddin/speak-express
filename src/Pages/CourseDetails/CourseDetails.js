@@ -8,7 +8,7 @@ const CourseDetails = () => {
             <Container>
                 <Row>
                     <Col md={8}>
-                        <h4>tittle will show here </h4>
+                        <h4>tittle will show here</h4>
                         <h5>image show here</h5>
                         <p>course details show here. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, nam deserunt vitae perferendis labore necessitatibus recusandae deleniti facilis delectus asperiores ipsum, repudiandae voluptas alias! Eos dolores alias iure corporis porro!</p>
                     </Col>

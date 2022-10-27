@@ -13,10 +13,10 @@ const Register = () => {
     const handleRgister = e => {
         e.preventDefault()
         const form = e.target;
-        const name = form.name.value
+        const name = form.name.value;
         const email = form.email.value;
-        const password = form.password.value
-        const confirm = form.confirm.value
+        const password = form.password.value;
+        const confirm = form.confirm.value;
         if (password !== confirm) {
             setError('password did not matched')
             return;

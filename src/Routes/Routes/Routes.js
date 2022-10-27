@@ -3,6 +3,7 @@ import Main from "../../Layout/Main";
 import Blog from "../../Pages/Blog/Blog";
 import CourseDetails from "../../Pages/CourseDetails/CourseDetails";
 import Courses from "../../Pages/Courses/Courses";
+import Error from "../../Pages/Error/Error";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Premium from "../../Pages/Premium/Premium";
@@ -20,15 +21,19 @@ export const routes = createBrowserRouter([
             },
             {
                 path: 'courses',
-                element: <Courses></Courses>
+                element: <Courses></Courses>,
+                loader: () => fetch('http://localhost:5000/allLanguage')
             },
             {
                 path: 'blog',
                 element: <Blog></Blog>
             },
             {
-                path: 'courseDetails',
-                element: <CourseDetails></CourseDetails>
+                path: 'courseDetails/:id',
+                loader: async ({ params }) => {
+                    return fetch(`http://localhost:5000/allLanguage/${params.id}`)
+                },
+                element: <CourseDetails></CourseDetails>,
             },
             {
                 path: 'premium',
@@ -43,5 +48,9 @@ export const routes = createBrowserRouter([
                 element: <Register></Register>
             }
         ]
+    },
+    {
+        path: '*',
+        element: <Error></Error>
     }
 ])
