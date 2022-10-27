@@ -9,7 +9,7 @@ const Courses = () => {
     const [languages, setLanuages] = useState([])
     const languageDetails = useLoaderData()
     useEffect(() => {
-        fetch('http://localhost:5000/language-catagory')
+        fetch('https://speak-express-server.vercel.app/language-catagory')
             .then(res => res.json())
             .then(data => setLanuages(data))
     }, [])

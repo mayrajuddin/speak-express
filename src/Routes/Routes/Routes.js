@@ -4,6 +4,7 @@ import Blog from "../../Pages/Blog/Blog";
 import CourseDetails from "../../Pages/CourseDetails/CourseDetails";
 import Courses from "../../Pages/Courses/Courses";
 import Error from "../../Pages/Error/Error";
+import Faq from "../../Pages/Faq/Faq";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Premium from "../../Pages/Premium/Premium";
@@ -22,16 +23,20 @@ export const routes = createBrowserRouter([
             {
                 path: 'courses',
                 element: <Courses></Courses>,
-                loader: () => fetch('http://localhost:5000/allLanguage')
+                loader: () => fetch('https://speak-express-server.vercel.app/languagedata')
             },
             {
                 path: 'blog',
                 element: <Blog></Blog>
             },
             {
+                path: 'faq',
+                element: <Faq></Faq>
+            },
+            {
                 path: 'courseDetails/:id',
                 loader: async ({ params }) => {
-                    return fetch(`http://localhost:5000/allLanguage/${params.id}`)
+                    return fetch(`https://speak-express-server.vercel.app/languagedata/${params.id}`)
                 },
                 element: <CourseDetails></CourseDetails>,
             },

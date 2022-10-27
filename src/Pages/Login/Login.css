@@ -1,0 +1,11 @@
+.form input {
+    background-color: #EAEAEA;
+    border: none;
+    color: #888293;
+}
+
+.form input:focus {
+    outline: none;
+    box-shadow: none;
+    background-color: #EAEAEA;
+}

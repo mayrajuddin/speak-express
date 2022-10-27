@@ -1,11 +1,35 @@
+.top-nav {
+    background-color: #CAD3C8;
+}
+
 .logo {
     height: 34px;
 }
 
 .nav-c a {
-    color: #2E5691 !important;
+    color: #222222 !important;
+    font-weight: 500;
 }
 
 .font-c {
+    color: #2E5691;
+}
+
+.f-color {
+    color: #222222;
+}
+
+.register {
+    border: 1px solid #2E5691;
+    color: #222222;
+    border-radius: 6px;
+}
+
+.login {
+    margin: 0 8px;
+    border-radius: 6px;
+}
+
+.register:hover {
     color: #2E5691;
 }

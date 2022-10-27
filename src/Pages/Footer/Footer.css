@@ -1,5 +1,14 @@
 .social-icons a {
     font-size: 28px;
     margin: 0 5px;
-    color: #2E5691;
+    color: #221638;
+}
+
+.fot-top {
+    background-color: #F9F9F9;
+    padding: 40px 0;
+}
+
+.fot-top p {
+    color: #9F9F9F;
 }

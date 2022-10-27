@@ -6,12 +6,12 @@ import './Footer.css'
 const Footer = () => {
     return (
         <div className='mt-5'>
-            <div className='py-3'>
+            <div className='fot-top'>
                 <Container>
                     <Row>
                         <Col lg={5}>
                             <h4 className='font-c fw-bold fs-4 mb-3'>Speak Express</h4>
-                            <p className='pe-3'>It was some time before he obtained any answer, and the reply, when made, was unpropitious. </p>
+                            <p className='pe-3'>Working to bring significant changes in online-based learning by doing extensive research for course curriculum preparation, student engagements, and looking forward to the flexible education! </p>
                             <div className='social-icons'>
                                 <Link to=''><FaFacebook /></Link>
                                 <Link to=''><FaTwitter /></Link>
@@ -20,7 +20,7 @@ const Footer = () => {
                             </div>
                         </Col>
                         <Col lg={3}>
-                            <h5 className='text-capitalize fs-4'>Sort Links</h5>
+                            <h5 className='text-capitalize fs-4'>explore</h5>
                             <Nav className="nav-c flex-column">
                                 <Link to='/' className='nav-link fs-5 text-capitalize'>Courses</Link>
                                 <Link to='blog' className='nav-link fs-5 text-capitalize'>Blog</Link>

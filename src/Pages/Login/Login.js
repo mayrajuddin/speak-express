@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../context/AuthProvider';
+import './Login.css'
 
 const Login = () => {
     const { userLogin, googleSign } = useContext(authContext)
@@ -32,15 +33,15 @@ const Login = () => {
     return (
         <Container className='py-5'>
             <div className='w-50 mx-auto border rounded py-4 '>
-                <Form onSubmit={handleLogin} className='px-4'>
+                <Form onSubmit={handleLogin} className='px-4 form'>
                     <h5 className='text-center fs-3 fw-blod text-capitalize'>Login now</h5>
                     <Form.Group className="mb-3" controlId="formEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control name='email' type="email" placeholder="Enter email" />
+                        <Form.Control name='email' type="email" placeholder="Enter email" required />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" name='password' placeholder="Password" />
+                        <Form.Control type="password" name='password' placeholder="Password" required />
                     </Form.Group>
                     <div className='w-50 mx-auto mt-2'>
                         <Button variant="dark" type="submit" className='w-100 fs-4'>
