@@ -8,7 +8,7 @@ import { authContext } from '../../context/AuthProvider';
 import './Login.css'
 
 const Login = () => {
-    const { userLogin, googleSign } = useContext(authContext)
+    const { userLogin, googleSign, githubSign } = useContext(authContext)
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
@@ -29,6 +29,12 @@ const Login = () => {
             .then(result => {
                 navigate(from, { replace: true })
             })
+    }
+    const handleGithub = () => {
+        githubSign()
+            .then(result => {
+                navigate(from, { replace: true })
+            }).catch(e => console.error(e))
     }
     return (
         <Container className='py-5'>
@@ -52,7 +58,7 @@ const Login = () => {
                 <p className='fs-5 text-center text-capitalize py-3 '>- or  Login with -</p>
                 <div className='text-center pb-3'>
                     <Button onClick={handleGoogle} variant="outline-secondary" className='me-3 fs-5 text-capitalize py-2 px-4'>google</Button>
-                    <Button variant="outline-secondary" className=' fs-5 text-capitalize py-2 px-4'>github</Button>
+                    <Button onClick={handleGithub} variant="outline-secondary" className=' fs-5 text-capitalize py-2 px-4'>github</Button>
                 </div>
                 <p className='text-center'>New to speak express? <Link to='/register'>Create New Account</Link></p>
             </div>
