@@ -46,7 +46,7 @@ const Header = () => {
                         ))}
 
                     </Nav>
-                    <Nav className='align-items-center'>
+                    <div>
                         <b> <span>{toggle ? "Dark" : "Light"}</span></b>
                         <label onChange={() => {
                             setToggole(!toggle)
@@ -63,7 +63,7 @@ const Header = () => {
 
                         }
                         {user?.photoURL ? <img src={user?.photoURL} alt="userImage" title={user?.displayName} style={{ height: '34px' }} className='rounded-circle' /> : <img src={user?.photoURL} alt="userImage" className='d-none' />}
-                    </Nav>
+                    </div>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
