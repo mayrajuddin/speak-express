@@ -1,6 +1,6 @@
 import React from 'react';
 import { createContext } from 'react';
-import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import app from '../firebase/firebase.init'
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -15,6 +15,7 @@ const AuthProvider = ({ children }) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
+
     const userLogin = (email, password) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
@@ -30,6 +31,9 @@ const AuthProvider = ({ children }) => {
     const githubSign = () => {
         return signInWithPopup(auth, githubProvider)
     }
+    const updatePoofileInfo = (obj) => {
+        return updateProfile(auth.currentUser, obj)
+    }
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
@@ -38,7 +42,9 @@ const AuthProvider = ({ children }) => {
         return () => unSubscribe();
     }, [])
 
-    const authInfo = { user, loading, createUserEmailPass, userLogin, logOut, googleSign, githubSign }
+
+
+    const authInfo = { user, loading, createUserEmailPass, userLogin, logOut, googleSign, githubSign, updatePoofileInfo }
     return (
         <authContext.Provider value={authInfo}>
             {children}

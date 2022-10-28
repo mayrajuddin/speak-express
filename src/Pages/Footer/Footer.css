@@ -1,14 +1,24 @@
 .social-icons a {
     font-size: 28px;
     margin: 0 5px;
-    color: #221638;
+    color: #0A3867;
+}
+
+.social-icons a:hover,
+.fot-top a:hover {
+    color: #D92C54;
 }
 
 .fot-top {
-    background-color: #F9F9F9;
+    background-color: #A5B8D4;
     padding: 40px 0;
 }
 
-.fot-top p {
-    color: #9F9F9F;
+.fot-top p,
+.fot-top h5 {
+    color: #0A3867;
+}
+
+.fot-btm {
+    background-color: #0A3867;
 }

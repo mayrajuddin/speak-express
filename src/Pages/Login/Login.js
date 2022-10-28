@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
@@ -8,37 +8,52 @@ import { authContext } from '../../context/AuthProvider';
 import './Login.css'
 
 const Login = () => {
+    const [error, setError] = useState(null)
     const { userLogin, googleSign, githubSign } = useContext(authContext)
+
     const navigate = useNavigate()
     const location = useLocation()
-    const from = location.state?.from?.pathname || '/'
+
+    const from = location.state?.from?.pathname || '/';
+
+
     const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value
-        console.log(email, password);
         userLogin(email, password)
             .then(result => {
                 navigate(from, { replace: true })
+                setError('')
                 form.reset()
-            }).catch(e => console.error(e))
+            }).catch(e => {
+                setError(e.message)
+                console.error(e)
+            })
     }
+
+
     const handleGoogle = () => {
         googleSign()
             .then(result => {
                 navigate(from, { replace: true })
             })
     }
+
+
     const handleGithub = () => {
         githubSign()
             .then(result => {
                 navigate(from, { replace: true })
-            }).catch(e => console.error(e))
+            }).catch(e => {
+
+                console.error(e)
+            })
     }
     return (
         <Container className='py-5'>
-            <div className='w-50 mx-auto border rounded py-4 '>
+            <div className='col col-md-9 col-lg-6 mx-auto border rounded py-4 '>
                 <Form onSubmit={handleLogin} className='px-4 form'>
                     <h5 className='text-center fs-3 fw-blod text-capitalize'>Login now</h5>
                     <Form.Group className="mb-3" controlId="formEmail">
@@ -49,6 +64,7 @@ const Login = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" name='password' placeholder="Password" required />
                     </Form.Group>
+                    <p className='text-warning my-2 text-capitalize'>{error}</p>
                     <div className='w-50 mx-auto mt-2'>
                         <Button variant="dark" type="submit" className='w-100 fs-4'>
                             Login

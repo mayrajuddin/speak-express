@@ -1,0 +1,14 @@
+.banner-btn {
+    border: 1px solid #2E5691;
+    text-decoration: none;
+    color: #2E5691;
+    font-weight: 500;
+}
+
+.banner-btn:hover {
+    color: #222222;
+}
+
+.banner-bg {
+    background-color: #d3d9e4;
+}

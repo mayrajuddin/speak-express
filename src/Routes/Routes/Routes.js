@@ -41,8 +41,11 @@ export const routes = createBrowserRouter([
                 element: <CourseDetails></CourseDetails>,
             },
             {
-                path: 'premium',
-                element: <PrivateRoute> <Premium></Premium> </PrivateRoute>
+                path: '/premium/:id',
+                element: <PrivateRoute> <Premium></Premium> </PrivateRoute>,
+                loader: async ({ params }) => {
+                    return fetch(`https://speak-express-server.vercel.app/languagedata/${params.id}`)
+                },
             },
             {
                 path: 'login',

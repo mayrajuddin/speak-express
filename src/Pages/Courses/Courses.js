@@ -1,13 +1,16 @@
 import React from 'react';
+import './Courses.css';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 const Courses = () => {
     const [languages, setLanuages] = useState([])
-    const languageDetails = useLoaderData()
+    const [cat, setCat] = useState(null)
+    const languageDetailsAll = useLoaderData()
+    const languageDetails = cat ? languageDetailsAll.filter(items => cat === items.id) : languageDetailsAll;
+
     useEffect(() => {
         fetch('https://speak-express-server.vercel.app/language-catagory')
             .then(res => res.json())
@@ -16,12 +19,13 @@ const Courses = () => {
     return (
         <div className='my-3'>
             <Container>
-                <Row>
+                <Row className='gy-3'>
                     <Col lg={3}>
-                        <div className='border rounded p-4'>
-                            <h4 className='pb-2 border-bottom text-center text-capitalize'>all language {languages.length}</h4>
+                        <div className='rounded country-name'>
+                            <h4 className='py-3 border-bottom text-center text-capitalize text-light m-0'>all language</h4>
+                            <p style={{ cursor: 'pointer' }} onClick={() => { setCat(null) }} className='text-capitalize fs-5 list px-4 py-3  m-0'>ALL</p>
                             {
-                                languages.map(language => <p key={language.catagory_id} className='px-4 py-3 border-bottom m-0'>{language.catagory_name}</p>)
+                                languages.map(language => <p style={{ cursor: 'pointer' }} onClick={() => { setCat(language.catagory_id) }} key={language.catagory_id} className='text-capitalize fs-5 list px-4 py-3  m-0'>{language.catagory_name}</p>)
                             }
                         </div>
                     </Col>
@@ -30,15 +34,13 @@ const Courses = () => {
                             {
                                 languageDetails.map(lan => (
                                     <Col md={6} key={lan.id}>
-                                        <Card className='p-3'>
+                                        <Card className='p-3 cart'>
                                             <Card.Img variant="top" src={lan.img_url} style={{ height: '200px' }} />
                                             <Card.Body>
-                                                <Card.Title>language Name: {lan.language_name}</Card.Title>
-                                                <p className='fs-6'> <FaStar className='text-warning ' />
-                                                    <FaStar className='text-warning ' /><FaStar className='text-warning ' /><FaStar className='text-warning ' /><FaStarHalfAlt className='text-warning me-2' />
-                                                    {lan.ratings}</p>
+                                                <Card.Title className='cart-tle fw-bold text-capitalize'>language Name: {lan.language_name}</Card.Title>
+                                                <p className='fs-5 text-capitalize'>ratings : <span className='fw-bold darkblue'>{lan.ratings} Review</span></p>
                                             </Card.Body>
-                                            <Link to={`/courseDetails/${lan.id}`} className='py-2 border rounded text-center fs-4 text-decoration-none'>Details</Link>
+                                            <Link to={`/courseDetails/${lan.id}`} className='cart-btn py-2 text-light rounded text-center fs-4 text-decoration-none'>Details</Link>
                                         </Card>
                                     </Col>
                                 ))

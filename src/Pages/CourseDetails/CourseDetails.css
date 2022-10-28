@@ -1,3 +1,21 @@
 .details-img {
     height: 220px;
 }
+
+.btn-link {
+    background-color: #2E5691;
+}
+
+.btn-div {
+    position: relative;
+}
+
+.download-btn {
+    position: absolute;
+    right: 0;
+    top: -48px;
+    z-index: 222;
+    background-color: #2E5691;
+    padding: 8px;
+    border-radius: 3px;
+}

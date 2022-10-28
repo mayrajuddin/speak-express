@@ -1,0 +1,32 @@
+.country-name {
+    border: 1px solid #0A3867;
+}
+
+.country-name h4 {
+    background-color: #0A3867;
+}
+
+.list,
+.blog-tle,
+.details-div,
+.premium-cart {
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.cart {
+    border: 2px solid #A5B8D4;
+    filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.25));
+}
+
+.cart-tle {
+    color: #0A3867;
+    font-size: 23px;
+}
+
+.darkblue {
+    color: #0A3867;
+}
+
+.cart-btn {
+    background-color: #0A3867;
+}
